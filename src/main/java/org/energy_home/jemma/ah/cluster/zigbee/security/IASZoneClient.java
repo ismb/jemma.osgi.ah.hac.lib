@@ -24,10 +24,9 @@ public interface IASZoneClient {
 	final static String CMD_ZoneStatusChangeNotification_NAME = "ZoneStatusChangeNotification";
 	final static String CMD_ZoneEnrollRequest_NAME = "ZoneEnrollRequest";
 
-	public void execZoneStatusChangeNotification(int ZoneStatus, short ExtendedStatus, short ZoneID, int Delay,
-			IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
+	public void execZoneStatusChangeNotification(int ZoneStatus, short ExtendedStatus, short ZoneID, int Delay, IEndPointRequestContext context) throws ApplianceException,
+			ServiceClusterException;
 
-	public ZoneEnrollResponse execZoneEnrollRequest(int ZoneType, int ManufacturerCode, IEndPointRequestContext context)
-			throws ApplianceException, ServiceClusterException;
+	public ZoneEnrollResponse execZoneEnrollRequest(int ZoneType, int ManufacturerCode, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
 }

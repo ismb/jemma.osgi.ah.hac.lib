@@ -23,7 +23,6 @@ public interface ScenesClient {
 
 	final static String CMD_StoreScenesResponse_NAME = "StoreScenesResponse";
 
-	public void execStoreScenesResponse(short Status, int GroupID, short SceneID, IEndPointRequestContext context)
-			throws ApplianceException, ServiceClusterException;
+	public void execStoreScenesResponse(short Status, int GroupID, short SceneID, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
 }

@@ -42,13 +42,13 @@ import org.slf4j.LoggerFactory;
 
 public class SimpleHacService implements IHacService, CommandProvider {
 	private static final Logger LOG = LoggerFactory.getLogger(SimpleHacService.class);
-	
+
 	private AppliancesProxy appliancesProxy = null;
-	
+
 	SimpleHacService(AppliancesProxy appliancesProxy) {
 		this.appliancesProxy = appliancesProxy;
 	}
-	
+
 	public boolean removeAppliance(String appliancePid) {
 		ApplianceFactory factory = appliancesProxy.getApplianceFactory(appliancePid);
 		if (factory == null) {
@@ -71,7 +71,7 @@ public class SimpleHacService implements IHacService, CommandProvider {
 
 	public void clean() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public boolean reset(int level) {
@@ -84,22 +84,22 @@ public class SimpleHacService implements IHacService, CommandProvider {
 		return null;
 	}
 
-	public void installAppliance(String appliancePid, Dictionary props) throws HacException {		
+	public void installAppliance(String appliancePid, Dictionary props) throws HacException {
 	}
 
 	public void enableAppliance(String appliancePid) throws HacException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void updateAppliance(String appliancePid, Dictionary props) throws HacException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void createAppliance(String appliancePid, Dictionary props) throws HacException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public ILocation[] getLocations() {
@@ -124,12 +124,12 @@ public class SimpleHacService implements IHacService, CommandProvider {
 
 	public void addCategory(ICategory category) throws HacException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void removeCategory(String categoryPid) throws HacException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public Location addLocation(Location location) throws HacException {
@@ -149,36 +149,33 @@ public class SimpleHacService implements IHacService, CommandProvider {
 
 	public void openNetwork(String networkType) throws HacException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void openNetwork(String networkType, int duration) throws HacException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void closeNetwork(String networkType) throws HacException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	// HAC Command provider
-	
+
 	private String defaultAppliancePid = null;
-	
-	private static String invokeClusterMethod(IAppliancesProxy proxy, String appliancePid, Integer endPointId, String clusterName,
-			String methodName, String[] params) {
+
+	private static String invokeClusterMethod(IAppliancesProxy proxy, String appliancePid, Integer endPointId, String clusterName, String methodName, String[] params) {
 		try {
-			Object[] objectParams = TextConverter.getObjectParameters(Class.forName(clusterName), methodName, params,
-					proxy.getRequestContext(true));
-			return TextConverter.getTextRepresentation(proxy.invokeClusterMethod(appliancePid, endPointId, clusterName, methodName,
-					objectParams));
+			Object[] objectParams = TextConverter.getObjectParameters(Class.forName(clusterName), methodName, params, proxy.getRequestContext(true));
+			return TextConverter.getTextRepresentation(proxy.invokeClusterMethod(appliancePid, endPointId, clusterName, methodName, objectParams));
 		} catch (Throwable t) {
 			LOG.debug(t.getMessage(), t);
 			return TextConverter.getTextRepresentation(new Exception(t));
 		}
 	}
-	
+
 	public void _hac(CommandInterpreter ci) {
 		String command = ci.nextArgument();
 		Method method = null;
@@ -198,8 +195,6 @@ public class SimpleHacService implements IHacService, CommandProvider {
 		}
 	}
 
-	
-	
 	public void _lsapp(CommandInterpreter ci) {
 		boolean printFullInfo = false;
 		boolean addInstallingAppliances = false;
@@ -222,7 +217,7 @@ public class SimpleHacService implements IHacService, CommandProvider {
 				ci.println("");
 				printApplianceDetails(ci, appliance);
 			} else {
-				ci.println("\t" + appliance.getPid());	
+				ci.println("\t" + appliance.getPid());
 			}
 		}
 
@@ -234,7 +229,7 @@ public class SimpleHacService implements IHacService, CommandProvider {
 				if (printFullInfo) {
 					ci.println("");
 					printApplianceDetails(ci, appliance);
-				} else { 
+				} else {
 					ci.println("\t" + appliance.getPid());
 				}
 			}
@@ -305,8 +300,7 @@ public class SimpleHacService implements IHacService, CommandProvider {
 			ConfigServer configServer = (ConfigServer) commonEndPoint.getServiceCluster(ConfigServer.class.getName());
 
 			try {
-				ci.println("Appliance " + appliance.getPid() + " [\n\tname = " + configServer.getName(null)
-						+ "\n\tcategory = " + configServer.getCategoryPid(null)
+				ci.println("Appliance " + appliance.getPid() + " [\n\tname = " + configServer.getName(null) + "\n\tcategory = " + configServer.getCategoryPid(null)
 						+ "\n\tlocation = " + configServer.getLocationPid(null) + "\n]");
 			} catch (Exception e) {
 			}
@@ -315,13 +309,12 @@ public class SimpleHacService implements IHacService, CommandProvider {
 		for (int i = 0; i < endPoints.length; i++) {
 			IEndPoint endPoint = endPoints[i];
 			String[] serviceClustersNames = endPoint.getServiceClusterNames();
-			ci.println("EndPoint " + endPoint.getId() + (endPoint.isAvailable() ? " (available)" : "") + " - "
-					+ " of type " + endPoint.getType() + " ");
+			ci.println("EndPoint " + endPoint.getId() + (endPoint.isAvailable() ? " (available)" : "") + " - " + " of type " + endPoint.getType() + " ");
 
 			printArray(ci, serviceClustersNames);
 		}
 	}
-	
+
 	public void _appliance(CommandInterpreter ci) {
 		String appliancePid = ci.nextArgument();
 		if (appliancePid == null)
@@ -361,8 +354,7 @@ public class SimpleHacService implements IHacService, CommandProvider {
 		ISubscriptionParameters parameters = null;
 		if (minString != null && maxString != null && repChangeString != null)
 			parameters = new SubscriptionParameters(Long.parseLong(minString), Long.parseLong(maxString), repChange);
-		String result = TextConverter.getTextRepresentation(appliancesProxy.setAttributeSubscription(defaultAppliancePid, null,
-				clusterName, attributeName, parameters));
+		String result = TextConverter.getTextRepresentation(appliancesProxy.setAttributeSubscription(defaultAppliancePid, null, clusterName, attributeName, parameters));
 		ci.println(result);
 	}
 
@@ -372,8 +364,7 @@ public class SimpleHacService implements IHacService, CommandProvider {
 		if (attributeName == null) {
 			return;
 		}
-		String result = TextConverter.getTextRepresentation(appliancesProxy.getAttributeSubscription(defaultAppliancePid, null,
-				clusterName, attributeName));
+		String result = TextConverter.getTextRepresentation(appliancesProxy.getAttributeSubscription(defaultAppliancePid, null, clusterName, attributeName));
 		ci.println(result);
 	}
 

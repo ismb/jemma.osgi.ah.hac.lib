@@ -47,8 +47,8 @@ public interface IServiceCluster {
 
 	/**
 	 * Returns the name of this service cluster (e.g.
-	 * {@code "org.energy_home.jemma.ah.cluster.zigbee.general.OnOffServer"} in case
-	 * of a server side implementation of the OnOff ZigBee cluster)
+	 * {@code "org.energy_home.jemma.ah.cluster.zigbee.general.OnOffServer"} in
+	 * case of a server side implementation of the OnOff ZigBee cluster)
 	 * 
 	 * @return The name of this service cluster
 	 */
@@ -56,8 +56,8 @@ public interface IServiceCluster {
 
 	/**
 	 * Returns the type of this service cluster (e.g.
-	 * {@code "org.energy_home.jemma.ah.cluster.zigbee.general.OnOff"} in case of a
-	 * client or server side implementation of the OnOff ZigBee cluster)
+	 * {@code "org.energy_home.jemma.ah.cluster.zigbee.general.OnOff"} in case
+	 * of a client or server side implementation of the OnOff ZigBee cluster)
 	 * 
 	 * @return The name of this service cluster
 	 */
@@ -74,7 +74,7 @@ public interface IServiceCluster {
 	public int getSide();
 
 	public boolean isEmpty();
-	
+
 	/**
 	 * Checks the availability of service exposed by this service cluster
 	 * 
@@ -110,8 +110,8 @@ public interface IServiceCluster {
 	 *             associated physical ZigBee device)
 	 * 
 	 */
-	public ISubscriptionParameters getAttributeSubscription(String attributeName, IEndPointRequestContext endPointRequestContext)
-			throws ApplianceException, ServiceClusterException;
+	public ISubscriptionParameters getAttributeSubscription(String attributeName, IEndPointRequestContext endPointRequestContext) throws ApplianceException,
+			ServiceClusterException;
 
 	// public ISubscriptionParameters getAttributeSubscription(String
 	// attributeName, Object attributeSelector, IEndPointRequestContext
@@ -149,15 +149,15 @@ public interface IServiceCluster {
 	 *             associated physical ZigBee device)
 	 * 
 	 */
-	public ISubscriptionParameters setAttributeSubscription(String attributeName, ISubscriptionParameters parameters,
-			IEndPointRequestContext endPointRequestContext) throws ApplianceException, ServiceClusterException;
+	public ISubscriptionParameters setAttributeSubscription(String attributeName, ISubscriptionParameters parameters, IEndPointRequestContext endPointRequestContext)
+			throws ApplianceException, ServiceClusterException;
 
 	public Map getAllSubscriptions(IEndPointRequestContext endPointRequestContext) throws ApplianceException, ServiceClusterException;
-	
+
 	public void removeAllSubscriptions(IEndPointRequestContext endPointRequestContext) throws ApplianceException, ServiceClusterException;
-	
-	public IAttributeValue getLastNotifiedAttributeValue(String attributeName, IEndPointRequestContext endPointRequestContext)  throws ApplianceException, ServiceClusterException ;
-	
+
+	public IAttributeValue getLastNotifiedAttributeValue(String attributeName, IEndPointRequestContext endPointRequestContext) throws ApplianceException, ServiceClusterException;
+
 	// public ISubscriptionParameters setAttributeSubscription(String
 	// attributeName, Object attributeSelector, ISubscriptionParameters
 	// parameters,
@@ -187,8 +187,7 @@ public interface IServiceCluster {
 	 *             requested operation (e.g. an error code returned by the
 	 *             associated physical ZigBee device)
 	 */
-	public IAttributeValue getAttributeValue(String attributeName, IEndPointRequestContext endPointRequestContext)
-			throws ApplianceException, ServiceClusterException;
+	public IAttributeValue getAttributeValue(String attributeName, IEndPointRequestContext endPointRequestContext) throws ApplianceException, ServiceClusterException;
 
 	/**
 	 * Writes an attribute exposed by this service cluster
@@ -215,8 +214,8 @@ public interface IServiceCluster {
 	 *             requested operation (e.g. an error code returned by the
 	 *             associated physical ZigBee device)
 	 */
-	public IAttributeValue setAttributeValue(String attributeName, Object attributeValue,
-			IEndPointRequestContext endPointRequestContext) throws ApplianceException, ServiceClusterException;
+	public IAttributeValue setAttributeValue(String attributeName, Object attributeValue, IEndPointRequestContext endPointRequestContext) throws ApplianceException,
+			ServiceClusterException;
 
 	/**
 	 * Invokes a command implemented by this service cluster
@@ -245,8 +244,7 @@ public interface IServiceCluster {
 	 *             requested operation (e.g. an error code returned by the
 	 *             associated physical ZigBee device)
 	 */
-	public Object execCommand(String commandName, Object[] parameters, IEndPointRequestContext endPointRequestContext)
-			throws ApplianceException, ServiceClusterException;
-	
+	public Object execCommand(String commandName, Object[] parameters, IEndPointRequestContext endPointRequestContext) throws ApplianceException, ServiceClusterException;
+
 	public String[] getSupportedAttributeNames(IEndPointRequestContext endPointRequestContext) throws ApplianceException, ServiceClusterException;
 }

@@ -29,8 +29,7 @@ public interface AlarmsServer {
 
 	public int getAlarmCount(IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
-	public void execResetAlarm(short AlarmCode, int ClusterIdentifier, IEndPointRequestContext context) throws ApplianceException,
-			ServiceClusterException;
+	public void execResetAlarm(short AlarmCode, int ClusterIdentifier, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
 	public void execResetAllAlarms(IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 

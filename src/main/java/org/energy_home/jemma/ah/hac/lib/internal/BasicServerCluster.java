@@ -27,11 +27,10 @@ public class BasicServerCluster extends ServiceCluster implements BasicServer {
 	public BasicServerCluster() throws ApplianceException {
 		super();
 	}
-	
-	final static String[] supportedAttributes = {  ATTR_ZCLVersion_NAME, ATTR_PowerSource_NAME };
 
-	public String[] getSupportedAttributeNames(IEndPointRequestContext endPointRequestContext) throws ApplianceException,
-			ServiceClusterException {
+	final static String[] supportedAttributes = { ATTR_ZCLVersion_NAME, ATTR_PowerSource_NAME };
+
+	public String[] getSupportedAttributeNames(IEndPointRequestContext endPointRequestContext) throws ApplianceException, ServiceClusterException {
 		return supportedAttributes;
 	}
 
@@ -71,8 +70,7 @@ public class BasicServerCluster extends ServiceCluster implements BasicServer {
 		throw new UnsupportedClusterAttributeException();
 	}
 
-	public void setLocationDescription(String LocationDescription, IEndPointRequestContext context) throws ApplianceException,
-			ServiceClusterException {
+	public void setLocationDescription(String LocationDescription, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException {
 		throw new UnsupportedClusterAttributeException();
 	}
 
@@ -80,8 +78,7 @@ public class BasicServerCluster extends ServiceCluster implements BasicServer {
 		throw new UnsupportedClusterAttributeException();
 	}
 
-	public void setPhysicalEnvironment(short PhysicalEnvironment, IEndPointRequestContext context) throws ApplianceException,
-			ServiceClusterException {
+	public void setPhysicalEnvironment(short PhysicalEnvironment, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException {
 		throw new UnsupportedClusterAttributeException();
 
 	}
@@ -90,8 +87,7 @@ public class BasicServerCluster extends ServiceCluster implements BasicServer {
 		throw new UnsupportedClusterAttributeException();
 	}
 
-	public void setDeviceEnabled(boolean DeviceEnabled, IEndPointRequestContext context) throws ApplianceException,
-			ServiceClusterException {
+	public void setDeviceEnabled(boolean DeviceEnabled, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException {
 		throw new UnsupportedClusterAttributeException();
 
 	}
@@ -108,8 +104,7 @@ public class BasicServerCluster extends ServiceCluster implements BasicServer {
 		throw new UnsupportedClusterAttributeException();
 	}
 
-	public void setDisableLocalConfig(short DisableLocalConfig, IEndPointRequestContext context) throws ApplianceException,
-			ServiceClusterException {
+	public void setDisableLocalConfig(short DisableLocalConfig, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException {
 		throw new UnsupportedClusterAttributeException();
 	}
 

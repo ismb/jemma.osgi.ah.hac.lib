@@ -28,7 +28,6 @@ public interface OnOffSwitchConfigurationServer {
 
 	public short getSwitchActions(IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
-	public void setSwitchActions(short SwitchActions, IEndPointRequestContext context) throws ApplianceException,
-			ServiceClusterException;
+	public void setSwitchActions(short SwitchActions, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
 }

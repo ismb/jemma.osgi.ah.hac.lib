@@ -41,7 +41,6 @@ public interface OnOffServer {
 
 	public void execToggle(IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
-	public void execOnWithDuration(int OnDuration, IEndPointRequestContext context) throws ApplianceException,
-			ServiceClusterException;
+	public void execOnWithDuration(int OnDuration, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
 }

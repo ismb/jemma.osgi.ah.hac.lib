@@ -24,10 +24,8 @@ public interface ApplianceEventsAndAlertsClient {
 	final static String CMD_AlertsNotification_NAME = "AlertsNotification";
 	final static String CMD_EventNotification_NAME = "EventNotification";
 
-	public void execAlertsNotification(int[] Alerts, IEndPointRequestContext context) throws ApplianceException,
-			ServiceClusterException;
+	public void execAlertsNotification(int[] Alerts, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
-	public void execEventNotification(short EventHeader, short EventIdentification, IEndPointRequestContext context)
-			throws ApplianceException, ServiceClusterException;
+	public void execEventNotification(short EventHeader, short EventIdentification, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
 }

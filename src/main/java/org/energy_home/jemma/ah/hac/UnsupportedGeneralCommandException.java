@@ -21,7 +21,7 @@ public class UnsupportedGeneralCommandException extends ServiceClusterException 
 	public UnsupportedGeneralCommandException() {
 		super("UnsupportedGeneralComandException");
 	}
-	
+
 	public UnsupportedGeneralCommandException(String errorDescription) {
 		super(errorDescription);
 	}

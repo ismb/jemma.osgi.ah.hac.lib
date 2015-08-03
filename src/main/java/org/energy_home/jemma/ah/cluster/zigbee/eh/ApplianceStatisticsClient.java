@@ -24,8 +24,8 @@ public interface ApplianceStatisticsClient {
 	final static String CMD_LogNotification_NAME = "LogNotification";
 	final static String CMD_StatisticsAvailable_NAME = "StatisticsAvailable";
 
-	public void execLogNotification(long Timestamp, long LogID, long LogLength, byte[] LogPayload, IEndPointRequestContext context)
-			throws ApplianceException, ServiceClusterException;
+	public void execLogNotification(long Timestamp, long LogID, long LogLength, byte[] LogPayload, IEndPointRequestContext context) throws ApplianceException,
+			ServiceClusterException;
 
 	public void execStatisticsAvailable(IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 

@@ -23,7 +23,6 @@ public interface AlarmsClient {
 
 	final static String CMD_Alarm_NAME = "Alarm";
 
-	public void execAlarm(short AlarmCode, int ClusterIdentifier, IEndPointRequestContext context) throws ApplianceException,
-			ServiceClusterException;
+	public void execAlarm(short AlarmCode, int ClusterIdentifier, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
 }

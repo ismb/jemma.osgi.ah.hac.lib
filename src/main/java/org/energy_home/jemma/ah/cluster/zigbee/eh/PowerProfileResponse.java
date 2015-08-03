@@ -26,20 +26,19 @@ public class PowerProfileResponse {
 	public PowerProfileResponse() {
 	}
 
-	public PowerProfileResponse(short TotalProfileNum, short PowerProfileID,
-			org.energy_home.jemma.ah.cluster.zigbee.eh.PowerProfileTransferredPhase[] PowerProfileTransferredPhases) {
+	public PowerProfileResponse(short TotalProfileNum, short PowerProfileID, org.energy_home.jemma.ah.cluster.zigbee.eh.PowerProfileTransferredPhase[] PowerProfileTransferredPhases) {
 		this.TotalProfileNum = TotalProfileNum;
 		this.PowerProfileID = PowerProfileID;
 		this.PowerProfileTransferredPhases = PowerProfileTransferredPhases;
 	}
-	
+
 	public String toString() {
 		StringBuilder sb = new StringBuilder("{");
 		sb.append("TotalProfileNum=").append(TotalProfileNum);
 		sb.append(", PowerProfileID=").append(PowerProfileID);
 		sb.append(", PowerProfileTransferredPhases=").append(Arrays.toString(PowerProfileTransferredPhases));
 		sb.append("}");
-		return sb.toString();		
+		return sb.toString();
 	}
 
 }

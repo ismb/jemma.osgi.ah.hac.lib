@@ -42,22 +42,19 @@ public interface PowerProfileServer {
 
 	public short getScheduleMode(IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
-	public void setScheduleMode(short ScheduleMode, IEndPointRequestContext context) throws ApplianceException,
+	public void setScheduleMode(short ScheduleMode, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
+
+	public PowerProfileResponse execPowerProfileRequest(short PowerProfileID, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
+
+	public PowerProfileStateResponse execPowerProfileStateRequest(IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
+
+	public void execEnergyPhasesScheduleNotification(short PowerProfileID, ScheduledPhase[] ScheduledPhases, IEndPointRequestContext context) throws ApplianceException,
 			ServiceClusterException;
 
-	public PowerProfileResponse execPowerProfileRequest(short PowerProfileID, IEndPointRequestContext context)
-			throws ApplianceException, ServiceClusterException;
-
-	public PowerProfileStateResponse execPowerProfileStateRequest(IEndPointRequestContext context) throws ApplianceException,
+	public PowerProfileScheduleConstraintsResponse execPowerProfileScheduleConstraintsRequest(short PowerProfileID, IEndPointRequestContext context) throws ApplianceException,
 			ServiceClusterException;
 
-	public void execEnergyPhasesScheduleNotification(short PowerProfileID, ScheduledPhase[] ScheduledPhases,
-			IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
-
-	public PowerProfileScheduleConstraintsResponse execPowerProfileScheduleConstraintsRequest(short PowerProfileID,
-			IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
-
-	public EnergyPhasesScheduleStateResponse execEnergyPhasesScheduleStateRequest(short PowerProfileID,
-			IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
+	public EnergyPhasesScheduleStateResponse execEnergyPhasesScheduleStateRequest(short PowerProfileID, IEndPointRequestContext context) throws ApplianceException,
+			ServiceClusterException;
 
 }

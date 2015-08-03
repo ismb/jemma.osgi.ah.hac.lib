@@ -33,24 +33,23 @@ public class PeerServiceCluster implements IServiceCluster, IServiceClusterListe
 	private ServiceCluster managedServiceCluster;
 	private IServiceCluster serviceClusterProxy;
 	private PeerEndPoint peerEndPoint = null;
-	
+
 	protected ServiceCluster getManagedServiceCluster() {
-		return managedServiceCluster;	
+		return managedServiceCluster;
 	}
-	
+
 	protected IServiceCluster getServiceCluster() {
-		return serviceClusterProxy;		
+		return serviceClusterProxy;
 	}
-	
+
 	public PeerServiceCluster(ServiceCluster managedServiceCluster, PeerEndPoint peerEndPoint) throws ApplianceException {
 		this.managedServiceCluster = managedServiceCluster;
 		this.peerEndPoint = peerEndPoint;
 		Class clusterIf = managedServiceCluster.getClusterInterfaceClass();
 		PeerServiceClusterProxy serviceClusterHandler = new PeerServiceClusterProxy(this);
-		serviceClusterProxy = (IServiceCluster)Proxy.newProxyInstance(clusterIf.getClassLoader(), 
-						new Class[] {IServiceCluster.class, clusterIf }, serviceClusterHandler);
+		serviceClusterProxy = (IServiceCluster) Proxy.newProxyInstance(clusterIf.getClassLoader(), new Class[] { IServiceCluster.class, clusterIf }, serviceClusterHandler);
 	}
-	
+
 	public IEndPoint getEndPoint() {
 		return peerEndPoint;
 	}
@@ -70,63 +69,61 @@ public class PeerServiceCluster implements IServiceCluster, IServiceClusterListe
 	public boolean isEmpty() {
 		return managedServiceCluster.isEmpty();
 	}
-	
+
 	public boolean isAvailable() {
-		return managedServiceCluster.isAvailable() && ((PeerAppliance)peerEndPoint.getAppliance()).isPeerValid();
+		return managedServiceCluster.isAvailable() && ((PeerAppliance) peerEndPoint.getAppliance()).isPeerValid();
 	}
 
-	public ISubscriptionParameters getAttributeSubscription(String attributeName, IEndPointRequestContext endPointRequestContext)
-			throws ApplianceException, ServiceClusterException {
+	public ISubscriptionParameters getAttributeSubscription(String attributeName, IEndPointRequestContext endPointRequestContext) throws ApplianceException,
+			ServiceClusterException {
 		endPointRequestContext = peerEndPoint.getPeerValidRequestContext(endPointRequestContext);
 		return managedServiceCluster.getAttributeSubscription(attributeName, endPointRequestContext);
 	}
 
-	public ISubscriptionParameters setAttributeSubscription(String attributeName, ISubscriptionParameters parameters,
-			IEndPointRequestContext endPointRequestContext) throws ApplianceException, ServiceClusterException {
+	public ISubscriptionParameters setAttributeSubscription(String attributeName, ISubscriptionParameters parameters, IEndPointRequestContext endPointRequestContext)
+			throws ApplianceException, ServiceClusterException {
 		endPointRequestContext = peerEndPoint.getPeerValidRequestContext(endPointRequestContext);
 		return managedServiceCluster.setAttributeSubscription(attributeName, parameters, endPointRequestContext);
 	}
-	
-	public Map getAllSubscriptions(IEndPointRequestContext endPointRequestContext) throws ApplianceException,
-			ServiceClusterException {
+
+	public Map getAllSubscriptions(IEndPointRequestContext endPointRequestContext) throws ApplianceException, ServiceClusterException {
 		endPointRequestContext = peerEndPoint.getPeerValidRequestContext(endPointRequestContext);
 		return managedServiceCluster.getAllSubscriptions(endPointRequestContext);
 	}
-	
+
 	public void removeAllSubscriptions(IEndPointRequestContext endPointRequestContext) throws ApplianceException, ServiceClusterException {
 		endPointRequestContext = peerEndPoint.getPeerValidRequestContext(endPointRequestContext);
 		managedServiceCluster.removeAllSubscriptions(endPointRequestContext);
 	}
+
 	public IAttributeValue getLastNotifiedAttributeValue(String attributeName, IEndPointRequestContext endPointRequestContext) throws ApplianceException, ServiceClusterException {
 		endPointRequestContext = peerEndPoint.getPeerValidRequestContext(endPointRequestContext);
 		return managedServiceCluster.getLastNotifiedAttributeValue(attributeName, endPointRequestContext);
 	}
-	
-	public IAttributeValue getAttributeValue(String attributeName, IEndPointRequestContext endPointRequestContext)
-			throws ApplianceException, ServiceClusterException {
+
+	public IAttributeValue getAttributeValue(String attributeName, IEndPointRequestContext endPointRequestContext) throws ApplianceException, ServiceClusterException {
 		endPointRequestContext = peerEndPoint.getPeerValidRequestContext(endPointRequestContext);
 		return managedServiceCluster.getAttributeValue(attributeName, endPointRequestContext);
 	}
-	
+
 	public String[] getSupportedAttributeNames(IEndPointRequestContext endPointRequestContext) throws ApplianceException, ServiceClusterException {
 		endPointRequestContext = peerEndPoint.getPeerValidRequestContext(endPointRequestContext);
 		return managedServiceCluster.getSupportedAttributeNames(endPointRequestContext);
 	}
 
-	public IAttributeValue setAttributeValue(String attributeName, Object attributeValue,
-			IEndPointRequestContext endPointRequestContext) throws ApplianceException, ServiceClusterException {
+	public IAttributeValue setAttributeValue(String attributeName, Object attributeValue, IEndPointRequestContext endPointRequestContext) throws ApplianceException,
+			ServiceClusterException {
 		endPointRequestContext = peerEndPoint.getPeerValidRequestContext(endPointRequestContext);
 		return managedServiceCluster.setAttributeValue(attributeName, attributeValue, endPointRequestContext);
 	}
 
-	public Object execCommand(String commandName, Object[] parameters, IEndPointRequestContext endPointRequestContext)
-			throws ApplianceException, ServiceClusterException {
+	public Object execCommand(String commandName, Object[] parameters, IEndPointRequestContext endPointRequestContext) throws ApplianceException, ServiceClusterException {
 		endPointRequestContext = peerEndPoint.getPeerValidRequestContext(endPointRequestContext);
 		return managedServiceCluster.execCommand(commandName, parameters, endPointRequestContext);
 	}
 
-	public void notifyAttributeValue(String attributeName, IAttributeValue attributeValue,
-			IEndPointRequestContext endPointRequestContext) throws ServiceClusterException, ApplianceException {
+	public void notifyAttributeValue(String attributeName, IAttributeValue attributeValue, IEndPointRequestContext endPointRequestContext) throws ServiceClusterException,
+			ApplianceException {
 		endPointRequestContext = peerEndPoint.getPeerValidRequestContext(endPointRequestContext);
 		managedServiceCluster.notifyAttributeValue(attributeName, attributeValue, endPointRequestContext);
 	}

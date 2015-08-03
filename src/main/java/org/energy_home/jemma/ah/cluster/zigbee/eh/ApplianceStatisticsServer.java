@@ -30,8 +30,7 @@ public interface ApplianceStatisticsServer {
 
 	public short getLogQueueMaxSize(IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
-	public LogResponse execLogRequest(long LogID, IEndPointRequestContext context) throws ApplianceException,
-			ServiceClusterException;
+	public LogResponse execLogRequest(long LogID, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
 	public LogQueueResponse execLogQueueRequest(IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 

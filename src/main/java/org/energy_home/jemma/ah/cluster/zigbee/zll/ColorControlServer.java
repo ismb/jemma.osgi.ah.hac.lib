@@ -180,37 +180,26 @@ public interface ColorControlServer {
 
 	public int getColorTempPhysicalMax(IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
-	public void execMoveToHue(short Hue, short Direction, int TransitionTime, IEndPointRequestContext context)
-			throws ApplianceException, ServiceClusterException;
+	public void execMoveToHue(short Hue, short Direction, int TransitionTime, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
-	public void execMoveHue(short MoveMode, short Rate, IEndPointRequestContext context) throws ApplianceException,
-			ServiceClusterException;
+	public void execMoveHue(short MoveMode, short Rate, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
-	public void execStepHue(short StepMode, short StepSize, int TransitionTime, IEndPointRequestContext context)
-			throws ApplianceException, ServiceClusterException;
+	public void execStepHue(short StepMode, short StepSize, int TransitionTime, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
-	public void execMoveToSaturation(short Saturation, int TransitionTime, IEndPointRequestContext context)
-			throws ApplianceException, ServiceClusterException;
+	public void execMoveToSaturation(short Saturation, int TransitionTime, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
-	public void execMoveSaturation(short MoveMode, short Rate, IEndPointRequestContext context) throws ApplianceException,
-			ServiceClusterException;
+	public void execMoveSaturation(short MoveMode, short Rate, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
-	public void execStepSaturation(short StepMode, short StepSize, int TransitionTime, IEndPointRequestContext context)
-			throws ApplianceException, ServiceClusterException;
+	public void execStepSaturation(short StepMode, short StepSize, int TransitionTime, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
-	public void execMoveToHueAndSaturation(short Hue, short Saturation, int TransitionTime, IEndPointRequestContext context)
-			throws ApplianceException, ServiceClusterException;
+	public void execMoveToHueAndSaturation(short Hue, short Saturation, int TransitionTime, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
-	public void execMoveToColor(int ColorX, int ColorY, int TransitionTime, IEndPointRequestContext context)
-			throws ApplianceException, ServiceClusterException;
+	public void execMoveToColor(int ColorX, int ColorY, int TransitionTime, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
-	public void execMoveColor(int RateX, int RateY, IEndPointRequestContext context) throws ApplianceException,
-			ServiceClusterException;
+	public void execMoveColor(int RateX, int RateY, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
-	public void execStepColor(int StepX, int StepY, int TransitionTime, IEndPointRequestContext context) throws ApplianceException,
-			ServiceClusterException;
+	public void execStepColor(int StepX, int StepY, int TransitionTime, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
-	public void execMoveToColorTemperature(short ColorTemperature, int TransitionTime, IEndPointRequestContext context)
-			throws ApplianceException, ServiceClusterException;
+	public void execMoveToColorTemperature(short ColorTemperature, int TransitionTime, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
 }

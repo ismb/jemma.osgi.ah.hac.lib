@@ -35,8 +35,7 @@ public interface IASZoneServer {
 
 	public byte[] getIAS_CIE_Address(IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
-	public void setIAS_CIE_Address(byte[] IAS_CIE_Address, IEndPointRequestContext context) throws ApplianceException,
-			ServiceClusterException;
+	public void setIAS_CIE_Address(byte[] IAS_CIE_Address, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
 	public short getZoneID(IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 

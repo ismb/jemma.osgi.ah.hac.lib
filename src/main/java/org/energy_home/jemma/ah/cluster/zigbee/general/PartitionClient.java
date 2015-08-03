@@ -23,7 +23,6 @@ public interface PartitionClient {
 
 	final static String CMD_MultipleACK_NAME = "MultipleACK";
 
-	public void execMultipleACK(short ACKOptions, int FirstFrameID, int[] ackList, IEndPointRequestContext context)
-			throws ApplianceException, ServiceClusterException;
+	public void execMultipleACK(short ACKOptions, int FirstFrameID, int[] ackList, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
 }

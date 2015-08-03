@@ -30,29 +30,24 @@ public interface PowerProfileClient {
 	final static String CMD_PowerProfileScheduleConstraintsNotification_NAME = "PowerProfileScheduleConstraintsNotification";
 	final static String CMD_GetPowerProfilePriceExtended_NAME = "GetPowerProfilePriceExtended";
 
-	public void execPowerProfileNotification(short TotalProfileNum, short PowerProfileID,
-			PowerProfileTransferredPhase[] PowerProfileTransferredPhases, IEndPointRequestContext context)
-			throws ApplianceException, ServiceClusterException;
-
-	public GetPowerProfilePriceResponse execGetPowerProfilePrice(short PowerProfileID, IEndPointRequestContext context)
-			throws ApplianceException, ServiceClusterException;
-
-	public void execPowerProfilesStateNotification(PowerProfile[] PowerProfiles,
+	public void execPowerProfileNotification(short TotalProfileNum, short PowerProfileID, PowerProfileTransferredPhase[] PowerProfileTransferredPhases,
 			IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
-	public GetOverallSchedulePriceResponse execGetOverallSchedulePrice(IEndPointRequestContext context) throws ApplianceException,
+	public GetPowerProfilePriceResponse execGetPowerProfilePrice(short PowerProfileID, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
+
+	public void execPowerProfilesStateNotification(PowerProfile[] PowerProfiles, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
+
+	public GetOverallSchedulePriceResponse execGetOverallSchedulePrice(IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
+
+	public EnergyPhasesScheduleResponse execEnergyPhasesScheduleRequest(short PowerProfileID, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
+
+	public void execEnergyPhasesScheduleStateNotification(short PowerProfileID, ScheduledPhase[] ScheduledPhases, IEndPointRequestContext context) throws ApplianceException,
 			ServiceClusterException;
 
-	public EnergyPhasesScheduleResponse execEnergyPhasesScheduleRequest(short PowerProfileID, IEndPointRequestContext context)
+	public void execPowerProfileScheduleConstraintsNotification(short PowerProfileID, int StartAfter, int StopBefore, IEndPointRequestContext context) throws ApplianceException,
+			ServiceClusterException;
+
+	public GetPowerProfilePriceExtendedResponse execGetPowerProfilePriceExtended(short Options, short PowerProfileID, int PowerProfileStartTime, IEndPointRequestContext context)
 			throws ApplianceException, ServiceClusterException;
-
-	public void execEnergyPhasesScheduleStateNotification(short PowerProfileID, ScheduledPhase[] ScheduledPhases,
-			IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
-
-	public void execPowerProfileScheduleConstraintsNotification(short PowerProfileID, int StartAfter, int StopBefore,
-			IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
-
-	public GetPowerProfilePriceExtendedResponse execGetPowerProfilePriceExtended(short Options, short PowerProfileID, int PowerProfileStartTime,
-			IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
 }

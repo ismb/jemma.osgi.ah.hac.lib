@@ -36,13 +36,13 @@ import org.slf4j.LoggerFactory;
 
 public class AppliancesInitializationManager {
 	protected static final Logger LOG = LoggerFactory.getLogger(AppliancesInitializationManager.class);
-	
+
 	protected static boolean enableAutoInstall = false;
-	
+
 	private static boolean isNullOrEmpty(String s) {
 		return ((s == null) || (s.length() == 0));
 	}
-	
+
 	static {
 		String enableAutoInstallStr = System.getProperty("org.energy_home.jemma.ah.driver.autoinstall");
 		if (!isNullOrEmpty(enableAutoInstallStr)) {
@@ -54,33 +54,33 @@ public class AppliancesInitializationManager {
 		}
 	}
 
-	
 	private IEndPointRequestContext requestContext;
-	
+
 	private static String getClusterDetails(IServiceCluster serviceCluster) {
 		IEndPoint endPoint = serviceCluster.getEndPoint();
 		return String.format("appliance %s,  endPoint %s, cluster %s", endPoint.getAppliance().getPid(), endPoint.getId(), serviceCluster.getName());
 	}
-	
+
 	private void subscribe(IServiceCluster serviceCluster, String attributeName, boolean installing) {
 		subscribe(serviceCluster, attributeName, installing, null);
 	}
-	
+
 	private void subscribe(IServiceCluster serviceCluster, String attributeName, boolean installing, ISubscriptionParameters params) {
 		if (params == null)
 			params = ISubscriptionParameters.DEFAULT_SUBSCRIPTION_PARAMETERS;
 		try {
 			if (enableAutoInstall || installing || !(serviceCluster instanceof ServiceCluster)) {
-				serviceCluster.setAttributeSubscription(attributeName, params, requestContext);				
+				serviceCluster.setAttributeSubscription(attributeName, params, requestContext);
 			} else if (serviceCluster.getAttributeSubscription(attributeName, requestContext) == null) {
-				// Other applications can overwrite default subscription parameters
-				((ServiceCluster)serviceCluster).initAttributeSubscription(attributeName, params, requestContext);			
+				// Other applications can overwrite default subscription
+				// parameters
+				((ServiceCluster) serviceCluster).initAttributeSubscription(attributeName, params, requestContext);
 			}
 		} catch (Exception e) {
 			LOG.warn(String.format("Error while subscribing attribute %s from %s", attributeName, getClusterDetails(serviceCluster)), e);
 		}
 	}
-	
+
 	private void initApplianceControlCluster(IServiceCluster serviceCluster, boolean installing) {
 		subscribe(serviceCluster, ApplianceControlServer.ATTR_StartTime_NAME, installing);
 		subscribe(serviceCluster, ApplianceControlServer.ATTR_FinishTime_NAME, installing);
@@ -89,24 +89,24 @@ public class AppliancesInitializationManager {
 		subscribe(serviceCluster, ApplianceControlServer.ATTR_CycleTarget1_NAME, installing);
 		subscribe(serviceCluster, ApplianceControlServer.ATTR_TemperatureTarget0_NAME, installing);
 		subscribe(serviceCluster, ApplianceControlServer.ATTR_TemperatureTarget1_NAME, installing);
-		
+
 		subscribe(serviceCluster, ApplianceControlServer.ATTR_EcoMode_NAME, installing);
 		subscribe(serviceCluster, ApplianceControlServer.ATTR_HolidayMode_NAME, installing);
 		subscribe(serviceCluster, ApplianceControlServer.ATTR_IceParty_NAME, installing);
 		subscribe(serviceCluster, ApplianceControlServer.ATTR_SuperCoolMode_NAME, installing);
 		subscribe(serviceCluster, ApplianceControlServer.ATTR_SuperFreezeMode_NAME, installing);
-		
+
 		subscribe(serviceCluster, ApplianceControlServer.ATTR_RemoteControl_NAME, installing);
-		
+
 	}
-	
+
 	private void initSimpleMeteringCluster(IServiceCluster serviceCluster, boolean installing) {
-		SimpleMeteringServer sms = ((SimpleMeteringServer)serviceCluster);
+		SimpleMeteringServer sms = ((SimpleMeteringServer) serviceCluster);
 		try {
 			sms.getDemandFormatting(requestContext);
 		} catch (Exception e) {
 			LOG.warn(String.format("Error while reading demand formatting from %s", getClusterDetails(serviceCluster)));
-		} 
+		}
 		try {
 			sms.getSummationFormatting(requestContext);
 		} catch (Exception e) {
@@ -115,45 +115,46 @@ public class AppliancesInitializationManager {
 		subscribe(serviceCluster, SimpleMeteringServer.ATTR_CurrentSummationDelivered_NAME, installing);
 		subscribe(serviceCluster, SimpleMeteringServer.ATTR_IstantaneousDemand_NAME, installing);
 	}
-	
+
 	private void initOnOffCluster(IServiceCluster serviceCluster, boolean installing) {
 		subscribe(serviceCluster, OnOffServer.ATTR_OnOff_NAME, installing);
-	}	
-	
-	
+	}
+
 	private void initDoorLockCluster(IServiceCluster serviceCluster, boolean installing) {
 		subscribe(serviceCluster, DoorLockServer.ATTR_LockState_NAME, installing);
 	}
+
 	/*
-	private void initWindowsCoveringCluster(IServiceCluster serviceCluster, boolean installing) {
-		subscribe(serviceCluster, ZclWindowCoveringServer.ATTR_CurrentPositionLiftPercentage_NAME, installing);
-	}
-	*/
-	
+	 * private void initWindowsCoveringCluster(IServiceCluster serviceCluster,
+	 * boolean installing) { subscribe(serviceCluster,
+	 * ZclWindowCoveringServer.ATTR_CurrentPositionLiftPercentage_NAME,
+	 * installing); }
+	 */
+
 	private void initTemperatureMeasurementCluster(IServiceCluster serviceCluster, boolean installing) {
 		subscribe(serviceCluster, TemperatureMeasurementServer.ATTR_MeasuredValue_NAME, installing);
 	}
-	
+
 	private void initRelativeHumidityMeasurementCluster(IServiceCluster serviceCluster, boolean installing) {
 		subscribe(serviceCluster, RelativeHumidityMeasurementServer.ATTR_MeasuredValue_NAME, installing);
 	}
-	
+
 	private void initIlluminanceMeasurementCluster(IServiceCluster serviceCluster, boolean installing) {
 		subscribe(serviceCluster, IlluminanceMeasurementServer.ATTR_MeasuredValue_NAME, installing);
 	}
-	
+
 	private void initIASZoneCluster(IServiceCluster serviceCluster, boolean installing) {
 		subscribe(serviceCluster, IASZoneServer.ATTR_ZoneStatus_NAME, installing);
 	}
-	
+
 	private void initOccupancySensingCluster(IServiceCluster serviceCluster, boolean installing) {
 		subscribe(serviceCluster, OccupancySensingServer.ATTR_Occupancy_NAME, installing);
 	}
-	
+
 	public AppliancesInitializationManager(IEndPointRequestContext requestContext) {
 		this.requestContext = requestContext;
 	}
-	
+
 	public void initAppliance(IAppliance appliance, boolean installing) {
 
 		IEndPoint[] eps = appliance.getEndPoints();
@@ -194,16 +195,18 @@ public class AppliancesInitializationManager {
 				if (sc != null) {
 					initApplianceControlCluster(sc, installing);
 				}
-				/*Added by Marco*/
+				/* Added by Marco */
 				sc = ep.getServiceCluster(DoorLockServer.class.getName());
 				if (sc != null) {
 					initDoorLockCluster(sc, installing);
 				}
-				/*sc = ep.getServiceCluster(ZclWindowCoveringServer.class.getName());
-				if (sc != null) {
-					initWindowsCoveringCluster(sc, installing);
-				}*/
-			}			
+				/*
+				 * sc =
+				 * ep.getServiceCluster(ZclWindowCoveringServer.class.getName
+				 * ()); if (sc != null) { initWindowsCoveringCluster(sc,
+				 * installing); }
+				 */
+			}
 		}
 	}
 

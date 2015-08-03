@@ -46,8 +46,8 @@ public interface IServiceClustersListener {
 	 *             requested operation (e.g. an error code returned by the
 	 *             associated physical ZigBee device)
 	 */
-	public void notifyAttributeValue(String clusterName, String attributeName, IAttributeValue attributeValue,
-			IEndPointRequestContext endPointRequestContext) throws ServiceClusterException, ApplianceException;
+	public void notifyAttributeValue(String clusterName, String attributeName, IAttributeValue attributeValue, IEndPointRequestContext endPointRequestContext)
+			throws ServiceClusterException, ApplianceException;
 
 	// public void notifyAttributeValue(String clusterName, String
 	// attributeName, Object attributeSelector, IAttributeValue attributeValue,
@@ -75,8 +75,8 @@ public interface IServiceClustersListener {
 	 *             requested operation (e.g. an error code returned by the
 	 *             associated physical ZigBee device)
 	 */
-	public void notifyReadResponse(String clusterName, String attributeName, IAttributeValue attributeValue,
-			IEndPointRequestContext endPointRequestContext) throws ServiceClusterException, ApplianceException;
+	public void notifyReadResponse(String clusterName, String attributeName, IAttributeValue attributeValue, IEndPointRequestContext endPointRequestContext)
+			throws ServiceClusterException, ApplianceException;
 
 	/**
 	 * Notifies the completion of a previously requested write operation
@@ -99,8 +99,8 @@ public interface IServiceClustersListener {
 	 *             requested operation (e.g. an error code returned by the
 	 *             associated physical ZigBee device)
 	 */
-	public void notifyWriteResponse(String clusterName, String attributeName, IAttributeValue attributeValue,
-			IEndPointRequestContext endPointRequestContext) throws ServiceClusterException, ApplianceException;
+	public void notifyWriteResponse(String clusterName, String attributeName, IAttributeValue attributeValue, IEndPointRequestContext endPointRequestContext)
+			throws ServiceClusterException, ApplianceException;
 
 	/**
 	 * Notifies the completion of a previously invoked command
@@ -124,7 +124,6 @@ public interface IServiceClustersListener {
 	 *             requested operation (e.g. an error code returned by the
 	 *             associated physical ZigBee device)
 	 */
-	public void notifyCommandResponse(String clusterName, String commandName, Object response,
-			IEndPointRequestContext endPointRequestContext) throws ApplianceException;
+	public void notifyCommandResponse(String clusterName, String commandName, Object response, IEndPointRequestContext endPointRequestContext) throws ApplianceException;
 
 }

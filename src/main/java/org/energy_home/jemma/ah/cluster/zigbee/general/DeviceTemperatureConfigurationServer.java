@@ -41,27 +41,22 @@ public interface DeviceTemperatureConfigurationServer {
 
 	public short getDeviceTempAlarmMask(IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
-	public void setDeviceTempAlarmMask(short DeviceTempAlarmMask, IEndPointRequestContext context) throws ApplianceException,
-			ServiceClusterException;
+	public void setDeviceTempAlarmMask(short DeviceTempAlarmMask, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
 	public int getLowTempThreshold(IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
-	public void setLowTempThreshold(int LowTempThreshold, IEndPointRequestContext context) throws ApplianceException,
-			ServiceClusterException;
+	public void setLowTempThreshold(int LowTempThreshold, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
 	public int getHighTempThreshold(IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
-	public void setHighTempThreshold(int HighTempThreshold, IEndPointRequestContext context) throws ApplianceException,
-			ServiceClusterException;
+	public void setHighTempThreshold(int HighTempThreshold, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
 	public int getLowTempDwellTripPoint(IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
-	public void setLowTempDwellTripPoint(int LowTempDwellTripPoint, IEndPointRequestContext context) throws ApplianceException,
-			ServiceClusterException;
+	public void setLowTempDwellTripPoint(int LowTempDwellTripPoint, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
 	public int getHighTempDwellTripPoint(IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
-	public void setHighTempDwellTripPoint(int HighTempDwellTripPoint, IEndPointRequestContext context) throws ApplianceException,
-			ServiceClusterException;
+	public void setHighTempDwellTripPoint(int HighTempDwellTripPoint, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
 }

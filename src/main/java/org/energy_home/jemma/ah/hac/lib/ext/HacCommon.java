@@ -30,7 +30,7 @@ public class HacCommon {
 	/**
 	 * TODO: used for initial implementation of map attributes (do not use yet)
 	 */
-//	public static final String CLUSTER_ATTRIBUTE_SELECT_PREFIX = "select";
+	// public static final String CLUSTER_ATTRIBUTE_SELECT_PREFIX = "select";
 
 	/**
 	 * Prefix associated to all methods of an {@link IServiceInterface} used to
@@ -41,7 +41,7 @@ public class HacCommon {
 	/**
 	 * TODO: used for initial implementation of map attributes (do not use yet)
 	 */
-//	public static final String CLUSTER_ATTRIBUTE_PUT_PREFIX = "put";
+	// public static final String CLUSTER_ATTRIBUTE_PUT_PREFIX = "put";
 
 	/**
 	 * Prefix associated to all methods of an {@link IServiceInterface} used to
@@ -74,11 +74,9 @@ public class HacCommon {
 
 	public static String getPeerClusterName(String clusterName) {
 		if (clusterName.endsWith(CLUSTER_NAME_CLIENT_POSTFIX))
-			return clusterName.substring(0, clusterName.length() - CLUSTER_NAME_CLIENT_POSTFIX.length())
-					+ CLUSTER_NAME_SERVER_POSTFIX;
+			return clusterName.substring(0, clusterName.length() - CLUSTER_NAME_CLIENT_POSTFIX.length()) + CLUSTER_NAME_SERVER_POSTFIX;
 		else if (clusterName.endsWith(CLUSTER_NAME_SERVER_POSTFIX))
-			return clusterName.substring(0, clusterName.length() - CLUSTER_NAME_SERVER_POSTFIX.length())
-					+ CLUSTER_NAME_CLIENT_POSTFIX;
+			return clusterName.substring(0, clusterName.length() - CLUSTER_NAME_SERVER_POSTFIX.length()) + CLUSTER_NAME_CLIENT_POSTFIX;
 		else
 			return null;
 	}

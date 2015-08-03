@@ -41,25 +41,21 @@ public interface PartitionServerFull {
 
 	public short getPartitionedFrameSize(IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
-	public void setPartitionedFrameSize(short PartitionedFrameSize, IEndPointRequestContext context) throws ApplianceException,
-			ServiceClusterException;
+	public void setPartitionedFrameSize(short PartitionedFrameSize, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
 	public int getLargeFrameSize(IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
-	public void setLargeFrameSize(int LargeFrameSize, IEndPointRequestContext context) throws ApplianceException,
-			ServiceClusterException;
+	public void setLargeFrameSize(int LargeFrameSize, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
 	public short getNumberOfACKFrame(IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
-	public void setNumberOfACKFrame(short NumberOfACKFrame, IEndPointRequestContext context) throws ApplianceException,
-			ServiceClusterException;
+	public void setNumberOfACKFrame(short NumberOfACKFrame, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
 	public int getNACKTimeout(IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
 	public short getInterframeDelay(IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
-	public void setInterframeDelay(short InterframeDelay, IEndPointRequestContext context) throws ApplianceException,
-			ServiceClusterException;
+	public void setInterframeDelay(short InterframeDelay, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
 	public short getNumberOfSendRetries(IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
@@ -67,11 +63,10 @@ public interface PartitionServerFull {
 
 	public int getReceiverTimeout(IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
-	public void execTransferPartitionedFrame(short FragmentationOptions, int PartitionIndicator, byte[] PartitionedFrame,
-			IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
+	public void execTransferPartitionedFrame(short FragmentationOptions, int PartitionIndicator, byte[] PartitionedFrame, IEndPointRequestContext context)
+			throws ApplianceException, ServiceClusterException;
 
-	public ReadHandshakeParamResponse execReadHandshakeParam(IEndPointRequestContext context) throws ApplianceException,
-			ServiceClusterException;
+	public ReadHandshakeParamResponse execReadHandshakeParam(IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
 	public void execWriteHandshakeParam(IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 

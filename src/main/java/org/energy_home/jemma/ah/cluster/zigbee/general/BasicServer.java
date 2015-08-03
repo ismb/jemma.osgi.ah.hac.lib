@@ -53,18 +53,15 @@ public interface BasicServer {
 
 	public String getLocationDescription(IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
-	public void setLocationDescription(String LocationDescription, IEndPointRequestContext context) throws ApplianceException,
-			ServiceClusterException;
+	public void setLocationDescription(String LocationDescription, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
 	public short getPhysicalEnvironment(IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
-	public void setPhysicalEnvironment(short PhysicalEnvironment, IEndPointRequestContext context) throws ApplianceException,
-			ServiceClusterException;
+	public void setPhysicalEnvironment(short PhysicalEnvironment, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
 	public boolean getDeviceEnabled(IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
-	public void setDeviceEnabled(boolean DeviceEnabled, IEndPointRequestContext context) throws ApplianceException,
-			ServiceClusterException;
+	public void setDeviceEnabled(boolean DeviceEnabled, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
 	public short getAlarmMask(IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
@@ -72,7 +69,6 @@ public interface BasicServer {
 
 	public short getDisableLocalConfig(IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
-	public void setDisableLocalConfig(short DisableLocalConfig, IEndPointRequestContext context) throws ApplianceException,
-			ServiceClusterException;
+	public void setDisableLocalConfig(short DisableLocalConfig, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
 }

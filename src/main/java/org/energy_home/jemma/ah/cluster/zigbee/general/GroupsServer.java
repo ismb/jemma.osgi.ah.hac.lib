@@ -31,21 +31,16 @@ public interface GroupsServer {
 
 	public short getNameSupport(IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
-	public AddGroupResponse execAddGroup(int GroupID, String GroupName, IEndPointRequestContext context) throws ApplianceException,
-			ServiceClusterException;
+	public AddGroupResponse execAddGroup(int GroupID, String GroupName, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
-	public ViewGroupResponse execViewGroup(int GroupID, IEndPointRequestContext context) throws ApplianceException,
-			ServiceClusterException;
+	public ViewGroupResponse execViewGroup(int GroupID, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
-	public GetGroupMembershipResponse execGetGroupMembership(int[] GroupList, IEndPointRequestContext context)
-			throws ApplianceException, ServiceClusterException;
+	public GetGroupMembershipResponse execGetGroupMembership(int[] GroupList, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
-	public RemoveGroupResponse execRemoveGroup(int GroupID, IEndPointRequestContext context) throws ApplianceException,
-			ServiceClusterException;
+	public RemoveGroupResponse execRemoveGroup(int GroupID, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
 	public void execRemoveAllGroups(IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
-	public void execAddGroupIfIdentifying(int GroupID, String GroupName, IEndPointRequestContext context)
-			throws ApplianceException, ServiceClusterException;
+	public void execAddGroupIfIdentifying(int GroupID, String GroupName, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
 }

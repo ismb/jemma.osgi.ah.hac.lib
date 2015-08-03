@@ -37,10 +37,8 @@ public class TimeServerCluster extends ServiceCluster implements TimeServer {
 
 	private static final long INVALID_TIME = 0xffffffffL;
 
-	final static String[] supportedAttributes = { TimeServer.ATTR_Time_NAME, TimeServer.ATTR_TimeStatus_NAME,
-			TimeServer.ATTR_TimeZone_NAME, TimeServer.ATTR_DstStart_NAME, TimeServer.ATTR_DstEnd_NAME,
-			TimeServer.ATTR_DstShift_NAME, TimeServer.ATTR_StandardTime_NAME, TimeServer.ATTR_LocalTime_NAME,
-			TimeServer.ATTR_LastSetTime_NAME };
+	final static String[] supportedAttributes = { TimeServer.ATTR_Time_NAME, TimeServer.ATTR_TimeStatus_NAME, TimeServer.ATTR_TimeZone_NAME, TimeServer.ATTR_DstStart_NAME,
+			TimeServer.ATTR_DstEnd_NAME, TimeServer.ATTR_DstShift_NAME, TimeServer.ATTR_StandardTime_NAME, TimeServer.ATTR_LocalTime_NAME, TimeServer.ATTR_LastSetTime_NAME };
 
 	private static boolean isDateTimeOk() {
 		return System.currentTimeMillis() > DEFAULT_INITIAL_TIME;
@@ -55,8 +53,7 @@ public class TimeServerCluster extends ServiceCluster implements TimeServer {
 		updateDstParameters();
 	}
 
-	public String[] getSupportedAttributeNames(IEndPointRequestContext endPointRequestContext) throws ApplianceException,
-			ServiceClusterException {
+	public String[] getSupportedAttributeNames(IEndPointRequestContext endPointRequestContext) throws ApplianceException, ServiceClusterException {
 		return supportedAttributes;
 	}
 
@@ -154,7 +151,7 @@ public class TimeServerCluster extends ServiceCluster implements TimeServer {
 	public long getValidUntilTime(IEndPointRequestContext context) throws ApplianceException, ServiceClusterException {
 		throw new UnsupportedClusterAttributeException();
 	}
-	
+
 	public void setTimeZone(long TimeZone, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException {
 		throw new ReadOnlyAttributeException();
 	}
@@ -171,8 +168,7 @@ public class TimeServerCluster extends ServiceCluster implements TimeServer {
 		throw new ReadOnlyAttributeException();
 	}
 
-	public void setValidUntilTime(long ValidUntilTime, IEndPointRequestContext context) throws ApplianceException,
-			ServiceClusterException {
+	public void setValidUntilTime(long ValidUntilTime, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException {
 		throw new UnsupportedClusterAttributeException();
 	}
 }

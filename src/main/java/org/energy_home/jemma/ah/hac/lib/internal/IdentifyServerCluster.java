@@ -58,8 +58,7 @@ public class IdentifyServerCluster extends ServiceCluster implements IdentifySer
 		service.setIdentifyDelay(1000 * IdentifyTime);
 	}
 
-	public String[] getSupportedAttributeNames(IEndPointRequestContext endPointRequestContext) throws ApplianceException,
-			ServiceClusterException {
+	public String[] getSupportedAttributeNames(IEndPointRequestContext endPointRequestContext) throws ApplianceException, ServiceClusterException {
 		return supportedAttributes;
 	}
 }

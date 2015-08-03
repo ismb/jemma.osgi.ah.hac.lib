@@ -47,25 +47,19 @@ public interface ScenesServer {
 
 	public byte[] getLastConfiguredBy(IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
-	public AddSceneResponse execAddScene(int GroupID, short SceneID, int TransitionTime, String SceneName, byte[] ExtensionFieldSet,
-			IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
-
-	public ViewSceneResponse execViewScene(int GroupID, short SceneID, IEndPointRequestContext context) throws ApplianceException,
-			ServiceClusterException;
-
-	public RemoveSceneResponse execRemoveScene(int GroupID, short SceneID, IEndPointRequestContext context)
+	public AddSceneResponse execAddScene(int GroupID, short SceneID, int TransitionTime, String SceneName, byte[] ExtensionFieldSet, IEndPointRequestContext context)
 			throws ApplianceException, ServiceClusterException;
 
-	public RemoveAllScenesResponse execRemoveAllScenes(int GroupID, IEndPointRequestContext context) throws ApplianceException,
-			ServiceClusterException;
+	public ViewSceneResponse execViewScene(int GroupID, short SceneID, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
-	public void execStoreScene(int GroupID, short SceneID, IEndPointRequestContext context) throws ApplianceException,
-			ServiceClusterException;
+	public RemoveSceneResponse execRemoveScene(int GroupID, short SceneID, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
-	public void execRecallScene(int GroupID, short SceneID, IEndPointRequestContext context) throws ApplianceException,
-			ServiceClusterException;
+	public RemoveAllScenesResponse execRemoveAllScenes(int GroupID, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
-	public void execGetSceneMembership(int GroupID, IEndPointRequestContext context) throws ApplianceException,
-			ServiceClusterException;
+	public void execStoreScene(int GroupID, short SceneID, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
+
+	public void execRecallScene(int GroupID, short SceneID, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
+
+	public void execGetSceneMembership(int GroupID, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
 }

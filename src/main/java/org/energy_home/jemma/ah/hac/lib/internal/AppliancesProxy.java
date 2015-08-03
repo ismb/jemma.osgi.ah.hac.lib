@@ -38,9 +38,9 @@ import org.energy_home.jemma.ah.hac.lib.ext.IApplianceConfiguration;
 import org.energy_home.jemma.ah.hac.lib.ext.IAppliancesProxy;
 
 public class AppliancesProxy extends AppliancesBasicProxy implements IAppliancesProxy {
-	
-	//********** Internal miscellaneous methods
-	
+
+	// ********** Internal miscellaneous methods
+
 	private Object invoke(IServiceCluster serviceCluster, String methodName, Object[] params) throws Throwable {
 		Method[] methods = serviceCluster.getClass().getMethods();
 		Method method = null;
@@ -71,13 +71,13 @@ public class AppliancesProxy extends AppliancesBasicProxy implements IAppliances
 			throw new Exception("Invalid cluter method or parameters");
 		throw new Exception("Unknown exception");
 	}
-	
+
 	private Object clusterInvoke(String appliancePid, Integer endPointId, String clusterName, String methodName, Object[] params) throws Throwable {
 		Object result = null;
 		IServiceCluster serviceCluster = getServiceCluster(appliancePid, endPointId, clusterName);
 		if (serviceCluster != null) {
 			if (methodName != null) {
-				result = this.invoke((IServiceCluster)serviceCluster, methodName, params);
+				result = this.invoke((IServiceCluster) serviceCluster, methodName, params);
 			} else {
 				String msg = "invoke: method Name not found";
 				LOG.error(msg);
@@ -90,7 +90,7 @@ public class AppliancesProxy extends AppliancesBasicProxy implements IAppliances
 		}
 		return result;
 	}
-	
+
 	private IEndPoint getMainEndPoint(String appliancePid) {
 		IEndPoint ep = null;
 		IAppliance appliance = getAppliance(appliancePid);
@@ -101,7 +101,7 @@ public class AppliancesProxy extends AppliancesBasicProxy implements IAppliances
 			if (ep == null) {
 				IEndPoint[] eps = appliance.getEndPoints();
 				if (eps != null && eps.length > 0)
-					ep = eps[eps.length-1];
+					ep = eps[eps.length - 1];
 			}
 		}
 		return ep;
@@ -131,15 +131,14 @@ public class AppliancesProxy extends AppliancesBasicProxy implements IAppliances
 		return serviceCluster;
 	}
 
-	
-	//********** Public constructor
-	
+	// ********** Public constructor
+
 	public AppliancesProxy() throws ApplianceException {
 		super();
 	}
-	
-	//********** IAppliancesProxy service interface
-	
+
+	// ********** IAppliancesProxy service interface
+
 	public ILocation getLocation(String pid) {
 		ILocation[] locations = getLocations();
 		if (locations != null) {
@@ -150,7 +149,7 @@ public class AppliancesProxy extends AppliancesBasicProxy implements IAppliances
 		}
 		return null;
 	}
-	
+
 	public ILocation[] getLocations() {
 		synchronized (hacServiceSync) {
 			if (hacService == null) {
@@ -171,7 +170,7 @@ public class AppliancesProxy extends AppliancesBasicProxy implements IAppliances
 		}
 		return null;
 	}
-	
+
 	public ICategory[] getCategories() {
 		synchronized (hacServiceSync) {
 			if (hacService == null) {
@@ -181,7 +180,7 @@ public class AppliancesProxy extends AppliancesBasicProxy implements IAppliances
 			return hacService.getCategories();
 		}
 	}
-	
+
 	public synchronized List getInstallingAppliances() {
 		List list = new ArrayList(installingApplianceMap.size());
 		for (Iterator iterator = installingApplianceMap.values().iterator(); iterator.hasNext();) {
@@ -199,14 +198,14 @@ public class AppliancesProxy extends AppliancesBasicProxy implements IAppliances
 		}
 		return list;
 	}
-	
+
 	public IAppliance getInstallingAppliance(String appliancePid) {
 		ManagedApplianceStatus proxy = (ManagedApplianceStatus) installingApplianceMap.get(appliancePid);
 		if (proxy != null)
 			return proxy.getAppliance();
 		return null;
 	}
-	
+
 	public IApplianceConfiguration getApplianceConfiguration(String appliancePid) {
 		IAppliance appliance = getAppliance(appliancePid);
 		if (appliance == null) {
@@ -219,9 +218,9 @@ public class AppliancesProxy extends AppliancesBasicProxy implements IAppliances
 			return null;
 		return new ApplianceConfiguration(appliance.getEndPointIds(), configuration);
 	}
-	
+
 	public boolean updateApplianceConfiguration(IApplianceConfiguration applianceConfiguration) {
-		Map config = ((ApplianceConfiguration)applianceConfiguration).getConfigurationMap();
+		Map config = ((ApplianceConfiguration) applianceConfiguration).getConfigurationMap();
 		if (hacService == null) {
 			LOG.error("updateApplianceConfiguration error: hac service not available");
 			return false;
@@ -240,13 +239,13 @@ public class AppliancesProxy extends AppliancesBasicProxy implements IAppliances
 		if (config == null) {
 			LOG.error("installAppliance error: no configuration available");
 			return false;
-		}	
+		}
 		synchronized (hacServiceSync) {
 			if (hacService == null) {
 				LOG.error("installAppliance error: hac service not available");
 				return false;
 			}
-			try {	
+			try {
 				hacService.installAppliance(appliancePid, new Hashtable(config));
 			} catch (Exception e) {
 				LOG.error("installAppliance error: some problems occurred while trying to install appliance through hac service", e);
@@ -255,7 +254,7 @@ public class AppliancesProxy extends AppliancesBasicProxy implements IAppliances
 		}
 		return true;
 	}
-	
+
 	public boolean deleteAppliance(String appliancePid) {
 		synchronized (hacServiceSync) {
 			if (hacService == null) {
@@ -267,13 +266,13 @@ public class AppliancesProxy extends AppliancesBasicProxy implements IAppliances
 			} catch (Exception e) {
 				LOG.error("deleteAppliance error: some problems occurred while trying to delete configuration through hac service", e);
 				return false;
-			}				
+			}
 		}
 	}
-	
+
 	public Object invokeClusterMethod(String appliancePid, Integer endPointId, String clusterName, String methodName, Object[] params) throws Exception {
 		try {
-		    return clusterInvoke(appliancePid, endPointId, clusterName, methodName, params);
+			return clusterInvoke(appliancePid, endPointId, clusterName, methodName, params);
 		} catch (Throwable t) {
 			LOG.error("invoke error", t);
 			throw new Exception(t);
@@ -289,12 +288,11 @@ public class AppliancesProxy extends AppliancesBasicProxy implements IAppliances
 			} catch (Exception e) {
 				LOG.error("getAttributeSubscription error", e);
 			}
-		} 
-		return sp;		
+		}
+		return sp;
 	}
 
-	public ISubscriptionParameters setAttributeSubscription(String appliancePid, Integer endPointId, String clusterName, String attributeName,
-			ISubscriptionParameters parameters) {
+	public ISubscriptionParameters setAttributeSubscription(String appliancePid, Integer endPointId, String clusterName, String attributeName, ISubscriptionParameters parameters) {
 		ISubscriptionParameters sp = null;
 		IServiceCluster serviceCluster = getServiceCluster(appliancePid, endPointId, clusterName);
 		if (serviceCluster != null && !isNullOrEmpty(attributeName)) {
@@ -308,7 +306,7 @@ public class AppliancesProxy extends AppliancesBasicProxy implements IAppliances
 	}
 
 	public IAttributeValue getLastNotifiedAttributeValue(String appliancePid, Integer endPointId, String clusterName, String attributeName) {
-		ServiceCluster serviceCluster = (ServiceCluster)getServiceCluster(appliancePid, endPointId, clusterName);
+		ServiceCluster serviceCluster = (ServiceCluster) getServiceCluster(appliancePid, endPointId, clusterName);
 		try {
 			if (serviceCluster != null) {
 				return serviceCluster.getLastNotifiedAttributeValue(attributeName, null);
@@ -318,9 +316,9 @@ public class AppliancesProxy extends AppliancesBasicProxy implements IAppliances
 		}
 		return null;
 	}
-	
+
 	public IAttributeValue getLastReadAttributeValue(String appliancePid, Integer endPointId, String clusterName, String attributeName) {
-		ServiceCluster serviceCluster = (ServiceCluster)getServiceCluster(appliancePid, endPointId, clusterName);
+		ServiceCluster serviceCluster = (ServiceCluster) getServiceCluster(appliancePid, endPointId, clusterName);
 		try {
 			if (serviceCluster != null) {
 				return serviceCluster.getAttributeValue(attributeName, lastReadRequestContext);
@@ -343,7 +341,7 @@ public class AppliancesProxy extends AppliancesBasicProxy implements IAppliances
 						String attributeName = (String) iterator.next();
 						IAttributeValue attributeValue = serviceCluster.getLastNotifiedAttributeValue(attributeName, null);
 						if (attributeValue != null)
-							result.put(attributeName, attributeValue);		
+							result.put(attributeName, attributeValue);
 					}
 				}
 			}

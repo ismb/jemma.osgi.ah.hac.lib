@@ -269,11 +269,18 @@ public abstract class AppliancesBasicProxy extends Appliance implements IApplian
 										subscriptionParameters = (ISubscriptionParameters) entry.getValue();
 										try {
 											attributeValue = serviceCluster.getLastNotifiedAttributeValue(attributeName, null);
-											lastNotifiedTimestamp = (attributeValue != null) ? Math.max(attributeValue.getTimestamp(), applianceStatus.getLastSubscriptionRequestTime()) : applianceStatus.getLastSubscriptionRequestTime();
+											lastNotifiedTimestamp = (attributeValue != null) ? Math.max(attributeValue.getTimestamp(),
+													applianceStatus.getLastSubscriptionRequestTime()) : applianceStatus.getLastSubscriptionRequestTime();
 											if (subscriptionParameters != null && subscriptionParameters.getMaxReportingInterval() > 0) {
-												if (System.currentTimeMillis() - lastNotifiedTimestamp > SUBSCRIPTION_MAX_DELAY_FACTOR * subscriptionParameters.getMaxReportingInterval()) {
-													LOG.debug("Subscription reneweing for attribute " + attributeName + ", cluster " + serviceCluster.getName() + "," + " ep " + serviceCluster.getEndPoint().getId() + ", appliance " + appliancePids[i] + " -- parameters- MaxReportInterval: " + subscriptionParameters.getMaxReportingInterval() + " -- MinReportInterval: " + subscriptionParameters.getMinReportingInterval() + " -- ReportChange: " + subscriptionParameters.getReportableChange());
-													returnedSubscriptionParameters = serviceCluster.setAttributeSubscription(attributeName, subscriptionParameters, confirmedRequestContext);
+												if (System.currentTimeMillis() - lastNotifiedTimestamp > SUBSCRIPTION_MAX_DELAY_FACTOR
+														* subscriptionParameters.getMaxReportingInterval()) {
+													LOG.debug("Subscription reneweing for attribute " + attributeName + ", cluster " + serviceCluster.getName() + "," + " ep "
+															+ serviceCluster.getEndPoint().getId() + ", appliance " + appliancePids[i] + " -- parameters- MaxReportInterval: "
+															+ subscriptionParameters.getMaxReportingInterval() + " -- MinReportInterval: "
+															+ subscriptionParameters.getMinReportingInterval() + " -- ReportChange: "
+															+ subscriptionParameters.getReportableChange());
+													returnedSubscriptionParameters = serviceCluster.setAttributeSubscription(attributeName, subscriptionParameters,
+															confirmedRequestContext);
 													if (returnedSubscriptionParameters == null) {
 														// Retry subscription
 														// faster when fails
@@ -282,7 +289,7 @@ public abstract class AppliancesBasicProxy extends Appliance implements IApplian
 														enableFasterSubscriptionCheck();
 													}
 													if (returnedSubscriptionParameters != null || !isFasterSubscriptionCheckEnabled())
-														
+
 														// If the subscription
 														// succeeded or failed
 														// after a period of
@@ -477,7 +484,8 @@ public abstract class AppliancesBasicProxy extends Appliance implements IApplian
 		if (isHacDriverModeActive()) {
 			Hashtable props = new Hashtable(1);
 			props.put("osgi.command.scope", "hac");
-			hacServiceRegistration = bc.registerService(new String[] { IHacService.class.getName(), CommandProvider.class.getName() }, new SimpleHacService((AppliancesProxy) this), props);
+			hacServiceRegistration = bc.registerService(new String[] { IHacService.class.getName(), CommandProvider.class.getName() },
+					new SimpleHacService((AppliancesProxy) this), props);
 			hacDriverLocatorRegistration = bc.registerService(new String[] { DriverLocator.class.getName() }, new SimpleHacDriverLocator(), null);
 		}
 	}
@@ -789,18 +797,22 @@ public abstract class AppliancesBasicProxy extends Appliance implements IApplian
 
 	// ********** IServiceClusterListeners interface
 
-	public void notifyAttributeValue(String clusterName, String attributeName, IAttributeValue attributeValue, IEndPointRequestContext endPointRequestContext) throws ServiceClusterException, ApplianceException {
+	public void notifyAttributeValue(String clusterName, String attributeName, IAttributeValue attributeValue, IEndPointRequestContext endPointRequestContext)
+			throws ServiceClusterException, ApplianceException {
 		String appliancePid = endPointRequestContext.getPeerEndPoint().getAppliance().getPid();
 		ManagedApplianceStatus applianceStatus = (ManagedApplianceStatus) applianceMap.get(appliancePid);
 		if (applianceStatus == null)
 			applianceStatus = (ManagedApplianceStatus) installingApplianceMap.get(appliancePid);
 
 		if (applianceStatus == null || applianceStatus.getStatus() != ManagedApplianceStatus.STATUS_ENABLED) {
-			LOG.warn("notifyAttributeValue received from " + ((applianceStatus == null) ? "an unknown" : "a not enabled ") + " appliance: " + endPointRequestContext.getPeerEndPoint().getAppliance().getPid() + " " + clusterName + " " + attributeName + " " + attributeValue.getTimestamp() + " " + attributeValue.getValue());
+			LOG.warn("notifyAttributeValue received from " + ((applianceStatus == null) ? "an unknown" : "a not enabled ") + " appliance: "
+					+ endPointRequestContext.getPeerEndPoint().getAppliance().getPid() + " " + clusterName + " " + attributeName + " " + attributeValue.getTimestamp() + " "
+					+ attributeValue.getValue());
 			return;
 		}
 		Integer endPointId = new Integer(endPointRequestContext.getPeerEndPoint().getId());
-		LOG.debug("notifyAttributeValue: " + endPointRequestContext.getPeerEndPoint().getAppliance().getPid() + " " + endPointId + " " + clusterName + " " + attributeName + " " + attributeValue.getTimestamp() + " " + attributeValue.getValue());
+		LOG.debug("notifyAttributeValue: " + endPointRequestContext.getPeerEndPoint().getAppliance().getPid() + " " + endPointId + " " + clusterName + " " + attributeName + " "
+				+ attributeValue.getTimestamp() + " " + attributeValue.getValue());
 		synchronized (attributeValuesListenerList) {
 			for (Iterator iterator = attributeValuesListenerList.iterator(); iterator.hasNext();) {
 				IAttributeValuesListener listener = (IAttributeValuesListener) iterator.next();
@@ -813,15 +825,19 @@ public abstract class AppliancesBasicProxy extends Appliance implements IApplian
 		}
 	}
 
-	public void notifyReadResponse(String clusterName, String attributeName, IAttributeValue attributeValue, IEndPointRequestContext endPointRequestContext) throws ServiceClusterException, ApplianceException {
+	public void notifyReadResponse(String clusterName, String attributeName, IAttributeValue attributeValue, IEndPointRequestContext endPointRequestContext)
+			throws ServiceClusterException, ApplianceException {
 		if (LOG.isDebugEnabled()) {
-			LOG.debug(endPointRequestContext.getPeerEndPoint().getAppliance().getPid() + " - notifyReadResponse " + clusterName + " " + attributeName + " " + attributeValue.getTimestamp() + " " + attributeValue.getValue());
+			LOG.debug(endPointRequestContext.getPeerEndPoint().getAppliance().getPid() + " - notifyReadResponse " + clusterName + " " + attributeName + " "
+					+ attributeValue.getTimestamp() + " " + attributeValue.getValue());
 		}
 	}
 
-	public void notifyWriteResponse(String clusterName, String attributeName, IAttributeValue attributeValue, IEndPointRequestContext endPointRequestContext) throws ServiceClusterException, ApplianceException {
+	public void notifyWriteResponse(String clusterName, String attributeName, IAttributeValue attributeValue, IEndPointRequestContext endPointRequestContext)
+			throws ServiceClusterException, ApplianceException {
 		if (LOG.isDebugEnabled()) {
-			LOG.debug(endPointRequestContext.getPeerEndPoint().getAppliance().getPid() + " - notifyWriteResponse " + clusterName + " " + attributeName + " " + attributeValue.getTimestamp() + " " + attributeValue.getValue());
+			LOG.debug(endPointRequestContext.getPeerEndPoint().getAppliance().getPid() + " - notifyWriteResponse " + clusterName + " " + attributeName + " "
+					+ attributeValue.getTimestamp() + " " + attributeValue.getValue());
 		}
 	}
 

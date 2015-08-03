@@ -29,7 +29,6 @@ public interface ThermostatUserInterfaceConfigurationServer {
 
 	public short getKeypadLockout(IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
-	public short getScheduleProgrammingVisibility(IEndPointRequestContext context) throws ApplianceException,
-			ServiceClusterException;
+	public short getScheduleProgrammingVisibility(IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
 }

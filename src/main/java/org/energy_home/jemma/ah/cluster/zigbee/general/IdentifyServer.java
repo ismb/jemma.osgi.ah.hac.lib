@@ -27,12 +27,10 @@ public interface IdentifyServer {
 
 	public int getIdentifyTime(IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
-	public void setIdentifyTime(int IdentifyTime, IEndPointRequestContext context) throws ApplianceException,
-			ServiceClusterException;
+	public void setIdentifyTime(int IdentifyTime, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
 	public void execIdentify(int IdentifyTime, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
-	public IdentifyQueryResponse execIdentifyQuery(IEndPointRequestContext context) throws ApplianceException,
-			ServiceClusterException;
+	public IdentifyQueryResponse execIdentifyQuery(IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
 }

@@ -42,25 +42,19 @@ public interface LevelControlServer {
 
 	public short getOnLevel(IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
-	public void execMoveToLevel(short Level, int TransitionTime, IEndPointRequestContext context) throws ApplianceException,
-			ServiceClusterException;
+	public void execMoveToLevel(short Level, int TransitionTime, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
-	public void execMove(short MoveMode, short Rate, IEndPointRequestContext context) throws ApplianceException,
-			ServiceClusterException;
+	public void execMove(short MoveMode, short Rate, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
-	public void execStep(short StepMode, short StepSize, int TransitionTime, IEndPointRequestContext context)
-			throws ApplianceException, ServiceClusterException;
+	public void execStep(short StepMode, short StepSize, int TransitionTime, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
 	public void execStop(IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
-	public void execMoveToLevelWithOnOff(short Level, int TransitionTime, IEndPointRequestContext context)
-			throws ApplianceException, ServiceClusterException;
+	public void execMoveToLevelWithOnOff(short Level, int TransitionTime, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
-	public void execMoveWithOnOff(short MoveMode, short Rate, IEndPointRequestContext context) throws ApplianceException,
-			ServiceClusterException;
+	public void execMoveWithOnOff(short MoveMode, short Rate, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
-	public void execStepWithOnOff(short StepMode, short StepSize, int TransitionTime, IEndPointRequestContext context)
-			throws ApplianceException, ServiceClusterException;
+	public void execStepWithOnOff(short StepMode, short StepSize, int TransitionTime, IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 
 	public void execStopWithOnOff(IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
 

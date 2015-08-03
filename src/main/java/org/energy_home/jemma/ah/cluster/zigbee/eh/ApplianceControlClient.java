@@ -23,7 +23,7 @@ public interface ApplianceControlClient {
 
 	final static String CMD_SignalStateNotification_NAME = "SignalStateNotification";
 
-	public void execSignalStateNotification(short ApplianceStatus, short RemoteEnableFlags, int ApplianceStatus2,
-			IEndPointRequestContext context) throws ApplianceException, ServiceClusterException;
+	public void execSignalStateNotification(short ApplianceStatus, short RemoteEnableFlags, int ApplianceStatus2, IEndPointRequestContext context) throws ApplianceException,
+			ServiceClusterException;
 
 }
