@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1438008252459
-Build-Jdk: 1.7.0_45
-Built-By: bluewind
+Bnd-LastModified: 1438598099431
+Build-Jdk: 1.8.0_45
+Built-By: tomasi
 Bundle-Category: Automation@Home
 Bundle-ManifestVersion: 2
 Bundle-Name: Home Automation Core Service libs
@@ -43,13 +43,13 @@ Provide-Capability: osgi.service;effective:=active;objectClass:List<Stri
  .jemma.ah.hac.lib.ext.IAppliancesProxy,org.energy_home.jemma.ah.hac.ICo
  nfigurationInfoService"
 Require-Capability: osgi.service;effective:=active;resolution:=optional;
- filter:="(objectClass=org.osgi.service.event.EventAdmin)",osgi.service;
- effective:=active;resolution:=optional;filter:="(objectClass=org.energy
- _home.jemma.ah.hac.IAttributeValuesListener)",osgi.service;effective:=a
- ctive;resolution:=optional;filter:="(objectClass=org.energy_home.jemma.
- ah.hac.IApplicationService)",osgi.service;effective:=active;resolution:
- =optional;filter:="(objectClass=org.energy_home.jemma.ah.hac.IAppliance
- Factory)",osgi.service;effective:=active;resolution:=optional;filter:="
+ filter:="(objectClass=org.energy_home.jemma.ah.hac.IApplianceFactory)",
+ osgi.service;effective:=active;resolution:=optional;filter:="(objectCla
+ ss=org.osgi.service.event.EventAdmin)",osgi.service;effective:=active;r
+ esolution:=optional;filter:="(objectClass=org.energy_home.jemma.ah.hac.
+ IApplicationService)",osgi.service;effective:=active;resolution:=option
+ al;filter:="(objectClass=org.energy_home.jemma.ah.hac.IAttributeValuesL
+ istener)",osgi.service;effective:=active;resolution:=optional;filter:="
  (objectClass=org.energy_home.jemma.ah.hac.lib.ext.IHacService)",osgi.ee
  ;filter:="(&(osgi.ee=JavaSE)(version=1.5))"
 Service-Component: OSGI-INF/application_proxy.xml
