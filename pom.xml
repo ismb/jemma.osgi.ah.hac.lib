@@ -102,7 +102,7 @@
 							org.energy_home.jemma.ah.hac.lib.ext;version="3.4.0"
 							org.energy_home.jemma.ah.hac.lib.internal;version="3.4.0"
 						</Export-Package>
-						<Service-Component>OSGI-INF/application_proxy.xml</Service-Component>
+						<Service-Component>OSGI-INF/*.xml</Service-Component>
 						<Bundle-Vendor>Telecom Italia</Bundle-Vendor>
 						<Bundle-Category>JEMMA Automation@Home</Bundle-Category>
 						<Bundle-RequiredExecutionEnvironment>J2SE-1.5</Bundle-RequiredExecutionEnvironment>
